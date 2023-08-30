@@ -1,0 +1,48 @@
+<%- include("partials/header.ejs") %>
+
+    <h2>To Do List</h2>
+
+    <form action="/" method="post">
+      <label for="taskDay">Please enter the task:</label><br />
+      <input type="text" id="taskDay" name="taskDay" required />
+      <input type="submit" value="ADD" />
+    </form>
+    
+    <ul>
+      <% for (var i=0; i<addedTaskDay.length; i++) { %>
+          <li>
+            <input type="checkbox" name="checkbox">
+            <%= addedTaskDay[i]; %>
+          </li>
+      <% } %>
+    </ul> 
+
+
+    <script>
+      /*THIS WORKS BY CLICKING THE TEXT*/
+     /*var checkbox = document.querySelector("ul");
+      checkbox.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+          event.target.classList.toggle('checked');
+        }
+      });*/
+
+      /*THIS IS STILL IN PROGRESS*/
+      var lengthCheckbox = document.querySelectorAll("input[name=checkbox]").length;
+      
+      for (var i=0; i<lengthCheckbox; i++) {
+      var checkbox = document.querySelectorAll("input[name=checkbox]")[i];
+      checkbox.addEventListener('click', function(event) {
+        console.log(event.target.tagName);
+        if (event.target.tagName === 'INPUT') {
+          
+          document.querySelector("li").classList.toggle("checked");
+        }
+      });
+      }
+    
+
+    </script>
+
+ 
+<%- include("partials/footer.ejs") %>

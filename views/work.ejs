@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+<h2>Work List</h2>
+
+    <form action="/addWork" method="post">
+      <label for="taskWork">Please enter the task:</label><br />
+      <input type="text" id="taskWork" name="taskWork" required />
+      <input type="submit" value="ADD" />
+    </form>
+    
+    
+      <% for (var i=0; i<addedTaskWork.length; i++) { %>
+        <input type="checkbox" id="checkbox" onclick="">
+        <label for="checkbox"><%= addedTaskWork[i]; %></label></br>
+      <% } %>
+    
+
+<%- include("partials/footer.ejs") %>
