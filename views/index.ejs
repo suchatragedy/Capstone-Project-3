@@ -1,48 +1,35 @@
 <%- include("partials/header.ejs") %>
 
-    <h2>To Do List</h2>
-
+<div class="text-center">
+  <h1 class="display-5 fw-bold text-body-emphasis">Task For Today</h1>
+  
+  <div class="col-lg-6 mx-auto">
     <form action="/" method="post">
-      <label for="taskDay">Please enter the task:</label><br />
-      <input type="text" id="taskDay" name="taskDay" required />
-      <input type="submit" value="ADD" />
+      <div class="d-flex">
+        <div class="p-2 w-100">
+          <input type="text" id="taskDay" name="taskDay" placeholder="Please enter a task:" required class="form-control"/>
+        </div>
+        <div class="p-1 flex-shrink-1">
+          <input  type="submit" value="ADD" class="btn btn-secondary my-1" />
+        </div>
+      </div>
     </form>
     
-    <ul>
-      <% for (var i=0; i<addedTaskDay.length; i++) { %>
-          <li>
-            <input type="checkbox" name="checkbox">
-            <%= addedTaskDay[i]; %>
-          </li>
-      <% } %>
-    </ul> 
-
-
-    <script>
-      /*THIS WORKS BY CLICKING THE TEXT*/
-     /*var checkbox = document.querySelector("ul");
-      checkbox.addEventListener('click', function(event) {
-        if (event.target.tagName === 'LI') {
-          event.target.classList.toggle('checked');
-        }
-      });*/
-
-      /*THIS IS STILL IN PROGRESS*/
-      var lengthCheckbox = document.querySelectorAll("input[name=checkbox]").length;
       
-      for (var i=0; i<lengthCheckbox; i++) {
-      var checkbox = document.querySelectorAll("input[name=checkbox]")[i];
-      checkbox.addEventListener('click', function(event) {
-        console.log(event.target.tagName);
-        if (event.target.tagName === 'INPUT') {
-          
-          document.querySelector("li").classList.toggle("checked");
-        }
-      });
-      }
-    
+    <div class="text-start">
+      <ul>
+        <% for (var i=0; i<addedTaskDay.length; i++) { %>
+            <li>
+              <input type="checkbox" name="checkbox">
+              <%= addedTaskDay[i]; %>
+            </li>
+        <% } %>
+      </ul> 
+    </div>
+  </div>
+</div>
 
-    </script>
+    
 
  
 <%- include("partials/footer.ejs") %>

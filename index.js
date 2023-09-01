@@ -5,9 +5,11 @@ const app = express();
 const port = 3000;
 
 let taskListDay = [];
+let taskCheckDay = [];
 var taskToAddDay = "";
 let dataDay = {
   addedTaskDay: taskListDay,
+  initialCheckDay: taskCheckDay,
 };
 
 let taskListWork = [];
@@ -22,6 +24,8 @@ function addTaskToListDay(req, res, next) {
   taskToAddDay = req.body["taskDay"];
   next();
 }
+
+
 
 app.use(addTaskToListDay);
 
@@ -39,7 +43,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  taskCheckDay.push(true);
   taskListDay.push(taskToAddDay);
+  console.log(taskListDay);
+  console.log(taskCheckDay);
   res.render("index.ejs", dataDay);
 });
 

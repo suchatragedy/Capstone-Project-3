@@ -1,18 +1,32 @@
 <%- include("partials/header.ejs") %>
 
-<h2>Work List</h2>
+<div class="text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">Work List</h1>
 
+    <div class="col-lg-6 mx-auto">
     <form action="/addWork" method="post">
-      <label for="taskWork">Please enter the task:</label><br />
-      <input type="text" id="taskWork" name="taskWork" required />
-      <input type="submit" value="ADD" />
+      <div class="d-flex">
+        <div class="p-2 w-100">
+          <input type="text" id="taskWork" name="taskWork" placeholder="Please enter a task:" required class="form-control" />
+        </div>
+        <div class="p-1 flex-shrink-1">
+      <input type="submit" value="ADD" class="btn btn-secondary my-1" />
+      </div>
+    </div>
     </form>
     
-    
+    <div class="text-start">
+    <ul>
       <% for (var i=0; i<addedTaskWork.length; i++) { %>
-        <input type="checkbox" id="checkbox" onclick="">
-        <label for="checkbox"><%= addedTaskWork[i]; %></label></br>
+        <li>
+          <input type="checkbox" name="checkbox">
+          <%= addedTaskWork[i]; %>
+        </li>
       <% } %>
+    </ul>
+    </div>
+  </div>
+</div>
     
 
 <%- include("partials/footer.ejs") %>
